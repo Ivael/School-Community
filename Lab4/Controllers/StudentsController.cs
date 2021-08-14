@@ -150,5 +150,41 @@ namespace Lab4.Controllers
         {
             return _context.Students.Any(e => e.id == id);
         }
+        public async Task<IActionResult> EditMemberships(int id)
+        {
+            CommunityViewModel communityViewModel = new CommunityViewModel();
+            communityViewModel.Memberships = await _context.CommunityMemberships.Where(i => i.StudentID == id)
+                     .ToListAsync();
+            communityViewModel.Students = await _context.Students.Where(i => i.id == id)
+                   .ToListAsync();
+
+            communityViewModel.Communities = await _context.Communities
+                  .ToListAsync();
+
+
+            return View(communityViewModel);
+        }
+        public async Task<IActionResult> AddMemberships(int studentId, string communityId)
+        {
+            CommunityMembership cs = new CommunityMembership();
+            cs.CommunityID = communityId;
+            cs.StudentID = studentId;
+            _context.CommunityMemberships.Add(cs);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("EditMemberships", new { id = studentId });
+        }
+
+        public async Task<IActionResult> RemoveMemberships(int studentId, string communityId)
+        {
+            CommunityMembership cs = new CommunityMembership();
+            cs.CommunityID = communityId;
+            cs.StudentID = studentId;
+            _context.CommunityMemberships.Remove(cs);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("EditMemberships", new { id = studentId });
+        }
+
     }
 }

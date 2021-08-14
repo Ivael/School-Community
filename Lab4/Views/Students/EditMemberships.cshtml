@@ -1,0 +1,40 @@
+﻿@model Lab4.Models.ViewModels.CommunityViewModel
+
+
+@{
+    ViewData["Title"] = "EditMemberships";
+    Layout = "_Layout";
+}
+
+<h1>Edit Memberships</h1>
+<a asp-action="Index">Back to List</a>
+<h2>Student</h2>
+<hr />
+    Full Name:  @Model.Students.First().FullName
+    <hr />
+    <table>
+        @foreach (var item in Model.Communities)
+        {
+
+            <tr>
+                <td>
+                    @item.Title
+                </td>
+                @if (Model.Memberships.Where(i => i.CommunityID == item.Id).Count() > 0)
+                {
+
+                    <td>
+                        <a asp-action="RemoveMemberships" asp-route-studentId="@Model.Students.First().id" asp-route-communityId="@item.Id">Deregister</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a asp-action="AddMemberships" asp-route-studentId="@Model.Students.First().id" asp-route-communityId="@item.Id">Register</a>
+                    </td>
+                }
+            </tr>
+
+        }
+
+    </table>

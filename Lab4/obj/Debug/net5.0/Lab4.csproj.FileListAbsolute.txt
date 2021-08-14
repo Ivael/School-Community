@@ -173,3 +173,4 @@ C:\Users\HP\Downloads\Lab4-master\Lab4-master\Lab4\obj\Debug\net5.0\Lab4.dll
 C:\Users\HP\Downloads\Lab4-master\Lab4-master\Lab4\obj\Debug\net5.0\ref\Lab4.dll
 C:\Users\HP\Downloads\Lab4-master\Lab4-master\Lab4\obj\Debug\net5.0\Lab4.pdb
 C:\Users\HP\Downloads\Lab4-master\Lab4-master\Lab4\obj\Debug\net5.0\Lab4.genruntimeconfig.cache
+C:\Users\HP\Downloads\Lab4-master\Lab4-master\Lab4\obj\Debug\net5.0\Razor\Views\Students\EditMemberships.cshtml.g.cs

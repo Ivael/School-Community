@@ -22,10 +22,16 @@ namespace Lab4.Data
             get;
             set;
         }
+        public DbSet<Advertisement> Advertisements
+        {
+            get;
+            set;
+        }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Advertisement>().ToTable("Advertisement");
             modelBuilder.Entity<Community>().ToTable("Community");
             modelBuilder.Entity<Student>().ToTable("Student");
             modelBuilder.Entity<CommunityMembership>()

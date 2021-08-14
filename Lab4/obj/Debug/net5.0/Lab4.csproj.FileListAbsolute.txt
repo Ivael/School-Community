@@ -178,3 +178,4 @@ C:\Users\HP\Downloads\Lab4-master\Lab4-master\Lab4\bin\Debug\net5.0\Azure.Core.d
 C:\Users\HP\Downloads\Lab4-master\Lab4-master\Lab4\bin\Debug\net5.0\Azure.Storage.Blobs.dll
 C:\Users\HP\Downloads\Lab4-master\Lab4-master\Lab4\bin\Debug\net5.0\Azure.Storage.Common.dll
 C:\Users\HP\Downloads\Lab4-master\Lab4-master\Lab4\bin\Debug\net5.0\System.Memory.Data.dll
+C:\Users\HP\Downloads\Lab4-master\Lab4-master\Lab4\obj\Debug\net5.0\Razor\Views\Advertisements\Index.cshtml.g.cs

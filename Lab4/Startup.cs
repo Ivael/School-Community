@@ -27,6 +27,8 @@ namespace Lab4
         public void ConfigureServices(IServiceCollection services)
         {
             var connection = Configuration.GetConnectionString("DefaultConnection");
+            var blobConnection = Configuration.GetConnectionString("AzureBlobStorage");
+            services.AddSingleton(new Azure.Storage.Blobs.BlobServiceClient(blobConnection));
             services.AddDbContext<SchoolCommunityContext>(options => options.UseSqlServer(connection));
             services.AddControllersWithViews();
 

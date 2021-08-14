@@ -1,9 +1,7 @@
-﻿@model IEnumerable<Lab4.Models.Community>
+﻿@model Lab4.Models.ViewModels.CommunityViewModel
 
-@{
-    Layout = "_Layout";
-    ViewData["Title"] = "Index";
-}
+@{ Layout = "_Layout";
+                ViewData["Title"] = "Index"; }
 
 <h1>Index</h1>
 
@@ -14,29 +12,62 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                Title
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Budget)
+                Budget
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Budget)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Communities)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Budget)
+    </td>
+    <td>
+        <a asp-action="Index" asp-route-id="@item.Id">Select</a> |
+        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </td>
+</tr>}
     </tbody>
 </table>
+@if (Model.Memberships != null)
+{
+    <h2>
+        Students of the community
+    </h2>
+
+    <table class="table">
+        <tr>
+
+            @if (Model.Communities.Count() > 0)
+            {
+                <th>
+                    student
+                </th>
+            }
+            else
+            {
+                <th>
+                    No student
+                </th>
+            }
+        </tr>
+        @foreach (var item in Model.Memberships)
+        {
+            <tr>
+                <td>
+                    @item.Student.FullName
+                </td>
+            </tr>
+        }
+    </table>
+}

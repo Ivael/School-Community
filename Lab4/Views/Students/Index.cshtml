@@ -1,0 +1,80 @@
+﻿@model Lab4.Models.ViewModels.CommunityViewModel
+
+@{ Layout = "_Layout";
+                ViewData["Title"] = "Index"; }
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                LastName
+            </th>
+            <th>
+                FirstName
+            </th>
+            <th>
+                Enrollmentdate
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Students)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Enrollmentdate)
+    </td>
+    <td>
+        <a asp-action="EditMemberships" asp-route-id="@item.id">EditMemberships</a> |
+        <a asp-action="Index" asp-route-id="@item.id">Select</a> |
+        <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+    </td>
+</tr>}
+    </tbody>
+</table>
+@if (Model.Memberships != null)
+{
+    <h2>
+        Community of the student
+    </h2>
+
+    <table class="table">
+        <tr>
+
+            @if (Model.Students.Count() > 0)
+            {
+                <th>
+                    Community
+                </th>
+            }
+            else
+            {
+                <th>
+                    No Community
+                </th>
+            }
+        </tr>
+        @foreach (var item in Model.Memberships)
+        {
+            <tr>
+                <td>
+                    @item.Community.Title
+                </td>
+            </tr>
+        }
+    </table>
+}

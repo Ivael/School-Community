@@ -50,7 +50,7 @@ namespace Lab4.Models
                 return LastName + ", " + FirstName;
             }
         }
-        public List<CommunityMembership> Membership
+        public ICollection<CommunityMembership> Membership
         {
             get;
             set;

@@ -28,7 +28,7 @@ namespace Lab4.Models
         [DataType(DataType.Currency)]
         [Column(TypeName = "money")]
         public decimal Budget { get; set; }
-        public List<CommunityMembership> Membership
+        public ICollection<CommunityMembership> Membership
         {
             get;
             set;
